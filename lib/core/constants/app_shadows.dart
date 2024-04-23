@@ -1,3 +1,4 @@
+import 'package:aviz/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 abstract class AppShadows {
@@ -28,35 +29,11 @@ abstract class AppShadows {
   ];
 
   static List<BoxShadow> md = [
-    BoxShadow(
-      offset: const Offset(0, 4),
-      blurRadius: 10,
-      spreadRadius: 0,
-      color: const Color(0xff101828).withOpacity(0.2),
-    ),
-    BoxShadow(
-      offset: const Offset(0, 18),
-      blurRadius: 18,
-      spreadRadius: 0,
-      color: const Color(0xff101828).withOpacity(0.2),
-    ),
-    BoxShadow(
-      offset: const Offset(0, 40),
-      blurRadius: 24,
-      spreadRadius: 0,
-      color: const Color(0xff101828).withOpacity(0.1),
-    ),
-    BoxShadow(
-      offset: const Offset(0, 70),
-      blurRadius: 28,
-      spreadRadius: 0,
-      color: const Color(0xff101828).withOpacity(0.0),
-    ),
-    BoxShadow(
-      offset: const Offset(0, 110),
-      blurRadius: 30,
-      spreadRadius: 0,
-      color: const Color(0xff101828).withOpacity(0.2),
+    const BoxShadow(
+      offset: Offset(0, 4),
+      blurRadius: 8,
+      spreadRadius: 2,
+      color: AppColors.grey200,
     ),
   ];
 
@@ -65,31 +42,31 @@ abstract class AppShadows {
       offset: const Offset(0, 4),
       blurRadius: 10,
       spreadRadius: 0,
-      color: const Color(0xff101828).withOpacity(0.3),
+      color: const Color(0xff000000).withOpacity(0.3),
     ),
     BoxShadow(
       offset: const Offset(0, 18),
       blurRadius: 18,
       spreadRadius: 0,
-      color: const Color(0xff101828).withOpacity(0.3),
+      color: const Color(0xff000000).withOpacity(0.3),
     ),
     BoxShadow(
       offset: const Offset(0, 40),
       blurRadius: 24,
       spreadRadius: 0,
-      color: const Color(0xff101828).withOpacity(0.2),
+      color: const Color(0xff000000).withOpacity(0.2),
     ),
     BoxShadow(
       offset: const Offset(0, 70),
       blurRadius: 24,
       spreadRadius: 0,
-      color: const Color(0xff101828).withOpacity(0.0),
+      color: const Color(0xff000000).withOpacity(0.0),
     ),
     BoxShadow(
       offset: const Offset(0, 110),
       blurRadius: 30,
       spreadRadius: 0,
-      color: const Color(0xff101828).withOpacity(0.0),
+      color: const Color(0xff000000).withOpacity(0.0),
     ),
   ];
 
