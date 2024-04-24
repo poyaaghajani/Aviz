@@ -71,8 +71,8 @@ class _HomepageState extends State<Homepage> {
       child: Padding(
         padding: EdgeInsets.only(
           bottom: 12.h,
-          right: AppMargins.md,
-          left: AppMargins.md,
+          right: AppMargins.bodyMd,
+          left: AppMargins.bodyMd,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -65,6 +65,30 @@ abstract class AppTheme {
       ),
     ),
 
+    // input decoration
+    inputDecorationTheme: InputDecorationTheme(
+      contentPadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
+      filled: true,
+      fillColor: Colors.white,
+      hintStyle: const TextStyle(
+        color: AppColors.grey300,
+        fontSize: 11,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(
+          color: AppColors.grey300,
+        ),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(color: AppColors.grey300),
+      ),
+      border: const OutlineInputBorder(
+        borderSide: BorderSide(),
+      ),
+    ),
+
     // bottom navigation
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       showUnselectedLabels: true,
