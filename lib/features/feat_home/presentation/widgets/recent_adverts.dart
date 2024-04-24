@@ -22,8 +22,8 @@ class HomeRecentAdverts extends StatelessWidget {
 
     return SliverPadding(
       padding: EdgeInsets.only(
-        left: AppMargins.bodyManinMargin,
-        right: AppMargins.bodyManinMargin,
+        left: AppMargins.md,
+        right: AppMargins.md,
         bottom: 16.h,
       ),
       sliver: SliverList.separated(

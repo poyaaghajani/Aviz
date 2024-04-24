@@ -28,8 +28,8 @@ class HomeHotAdverts extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(
                 bottom: 12.h,
-                right: AppMargins.bodyManinMargin,
-                left: AppMargins.bodyManinMargin,
+                right: AppMargins.md,
+                left: AppMargins.md,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,7 +51,7 @@ class HomeHotAdverts extends StatelessWidget {
               height: 294.h,
               child: ListView.separated(
                 padding: EdgeInsets.symmetric(
-                  horizontal: AppMargins.bodyManinMargin,
+                  horizontal: AppMargins.md,
                   vertical: 8.h,
                 ),
                 scrollDirection: Axis.horizontal,

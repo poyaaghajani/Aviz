@@ -65,6 +65,14 @@ abstract class AppTheme {
       ),
     ),
 
+    // bottom navigation
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      showUnselectedLabels: true,
+      showSelectedLabels: true,
+      unselectedItemColor: AppColors.grey400,
+      type: BottomNavigationBarType.fixed,
+    ),
+
     // text theme
     textTheme: TextTheme(
       bodyLarge: TextStyle(

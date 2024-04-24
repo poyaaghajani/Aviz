@@ -19,12 +19,16 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   @override
+  void initState() {
+    BlocProvider.of<ManageHomeBloc>(context).add(GetHomeRequest());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final bgColor = Theme.of(context).colorScheme.background;
     final textTeme = Theme.of(context).textTheme;
 
     return Scaffold(
-      backgroundColor: bgColor,
       appBar: const MainAppBar(),
       body: BlocBuilder<ManageHomeBloc, ManageHomeState>(
         builder: (context, state) {
@@ -67,8 +71,8 @@ class _HomepageState extends State<Homepage> {
       child: Padding(
         padding: EdgeInsets.only(
           bottom: 12.h,
-          right: AppMargins.bodyManinMargin,
-          left: AppMargins.bodyManinMargin,
+          right: AppMargins.md,
+          left: AppMargins.md,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
