@@ -4,8 +4,8 @@ import 'package:aviz/features/feat_home/data/models/advert_model.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class HomeRepository {
-  Future<Either<String, AdvertsModel>> getAllAdverts();
-  Future<Either<String, AdvertsModel>> getHotAdverts();
+  Future<Either<String, AdvertsModel>> getAllAdverts({required int page});
+  Future<Either<String, AdvertsModel>> getHotAdverts({required int page});
 }
 
 class HomeRepositoryImpl extends HomeRepository {
@@ -13,9 +13,10 @@ class HomeRepositoryImpl extends HomeRepository {
   HomeRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<String, AdvertsModel>> getAllAdverts() async {
+  Future<Either<String, AdvertsModel>> getAllAdverts(
+      {required int page}) async {
     try {
-      final response = await datasource.getAllAdverts();
+      final response = await datasource.getAllAdverts(page: page);
       return right(response);
     } on AppException catch (ex) {
       return left(appExcenptionHandler(ex.message!));
@@ -23,9 +24,10 @@ class HomeRepositoryImpl extends HomeRepository {
   }
 
   @override
-  Future<Either<String, AdvertsModel>> getHotAdverts() async {
+  Future<Either<String, AdvertsModel>> getHotAdverts(
+      {required int page}) async {
     try {
-      final response = await datasource.getHotAdverts();
+      final response = await datasource.getHotAdverts(page: page);
       return right(response);
     } on AppException catch (ex) {
       return left(appExcenptionHandler(ex.message!));

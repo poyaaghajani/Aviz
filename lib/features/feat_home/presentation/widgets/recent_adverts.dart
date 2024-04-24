@@ -1,5 +1,5 @@
 import 'package:aviz/core/constants/app_margins.dart';
-import 'package:aviz/core/widgets/advert_card.dart';
+import 'package:aviz/core/widgets/rectangle_advert.dart';
 import 'package:aviz/features/feat_home/data/models/advert_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +24,7 @@ class HomeRecentAdverts extends StatelessWidget {
         itemCount: allAdverts.length,
         separatorBuilder: (context, index) => SizedBox(height: 16.h),
         itemBuilder: (context, index) {
-          return AdvertCard(
+          return RectangleAdvert(
             advert: allAdverts[index],
             height: 140.h,
           );

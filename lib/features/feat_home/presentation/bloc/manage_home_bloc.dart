@@ -19,8 +19,8 @@ class ManageHomeBloc extends Bloc<ManageHomeEvent, ManageHomeState> {
   onGetHomeRequest(GetHomeRequest event, Emitter<ManageHomeState> emit) async {
     emit(state.copyWith(newGetStatus: HomeGetLoading()));
 
-    final allAdverts = await repository.getAllAdverts();
-    final hotAdverts = await repository.getHotAdverts();
+    final allAdverts = await repository.getAllAdverts(page: event.page);
+    final hotAdverts = await repository.getHotAdverts(page: event.page);
 
     allAdverts.fold(
       (error) => emit(state.copyWith(newGetStatus: HomeGetError(error))),

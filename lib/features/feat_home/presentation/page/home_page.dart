@@ -1,11 +1,14 @@
+import 'package:aviz/config/route/app_route.dart';
 import 'package:aviz/core/constants/app_margins.dart';
 import 'package:aviz/core/widgets/app_bar/main_appbar.dart';
 import 'package:aviz/core/widgets/error_state.dart';
 import 'package:aviz/core/widgets/loading_state.dart';
 import 'package:aviz/features/feat_home/presentation/bloc/get_home_status.dart';
 import 'package:aviz/features/feat_home/presentation/bloc/manage_home_bloc.dart';
+import 'package:aviz/features/feat_home/presentation/page/recent_adverts_page.dart';
 import 'package:aviz/features/feat_home/presentation/widgets/hot_adverts.dart';
 import 'package:aviz/features/feat_home/presentation/widgets/recent_adverts.dart';
+import 'package:aviz/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +23,7 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   @override
   void initState() {
-    BlocProvider.of<ManageHomeBloc>(context).add(GetHomeRequest());
+    BlocProvider.of<ManageHomeBloc>(context).add(const GetHomeRequest(page: 1));
     super.initState();
   }
 
@@ -55,7 +58,8 @@ class _HomepageState extends State<Homepage> {
             return ErrorState(
               message: error.errorMsg,
               onPressed: () {
-                BlocProvider.of<ManageHomeBloc>(context).add(GetHomeRequest());
+                BlocProvider.of<ManageHomeBloc>(context)
+                    .add(const GetHomeRequest(page: 1));
               },
             );
           } else {
@@ -82,7 +86,13 @@ class _HomepageState extends State<Homepage> {
               style: textTeme.bodyLarge,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                context.push(BlocProvider.value(
+                  value: locator.get<ManageHomeBloc>()
+                    ..add(const GetHomeRequest(page: 1)),
+                  child: const RecentAdvertsPage(),
+                ));
+              },
               child: const Text(
                 'مشاهده همه',
               ),

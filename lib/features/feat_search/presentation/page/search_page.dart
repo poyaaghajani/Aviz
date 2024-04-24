@@ -1,5 +1,6 @@
 import 'package:aviz/core/constants/app_margins.dart';
-import 'package:aviz/core/widgets/advert_card.dart';
+import 'package:aviz/core/widgets/pagination_button.dart';
+import 'package:aviz/core/widgets/rectangle_advert.dart';
 import 'package:aviz/core/widgets/app_bar/main_appbar.dart';
 import 'package:aviz/core/widgets/error_state.dart';
 import 'package:aviz/core/widgets/loading_state.dart';
@@ -71,7 +72,11 @@ class _SearchPageState extends State<SearchPage> {
             final SearchGetSuccess success =
                 (state.getStatus as SearchGetSuccess);
 
-            final allAdverts = success.response.items!;
+            final advert = success.response;
+            final int totalCount = advert.totalItems!;
+            final int pageSize = advert.perPage!;
+            final int currentPageNo = advert.page!;
+            final int totalPageNo = (totalCount / pageSize).ceil();
 
             return CustomScrollView(
               controller: _scrollController,
@@ -95,19 +100,42 @@ class _SearchPageState extends State<SearchPage> {
                   padding: EdgeInsets.only(
                     left: AppMargins.bodyMd,
                     right: AppMargins.bodyMd,
-                    bottom: 16.h,
                   ),
                   sliver: SliverList.separated(
-                    itemCount: allAdverts.length,
+                    itemCount: advert.items!.length,
                     separatorBuilder: (context, index) =>
                         SizedBox(height: 16.h),
                     itemBuilder: (context, index) {
-                      return AdvertCard(
-                        advert: allAdverts[index],
+                      return RectangleAdvert(
+                        advert: advert.items![index],
                         height: 140.h,
                       );
                     },
                   ),
+                ),
+
+                // pagination
+                PaginationButton(
+                  onPreviousPage: () {
+                    setState(() {
+                      _page--;
+                    });
+                    BlocProvider.of<ManageSearchBloc>(context).add(
+                      SearchGetRequest(page: _page, query: _query.text),
+                    );
+                  },
+                  onNextPage: () {
+                    setState(() {
+                      _page++;
+                    });
+                    BlocProvider.of<ManageSearchBloc>(context).add(
+                      SearchGetRequest(page: _page, query: _query.text),
+                    );
+                  },
+                  currentPageNo: currentPageNo,
+                  totalPageNo: totalPageNo,
+                  totalCount: totalCount,
+                  pageSize: pageSize,
                 ),
               ],
             );

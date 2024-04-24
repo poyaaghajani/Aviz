@@ -7,8 +7,8 @@ import 'package:aviz/features/feat_home/data/models/advert_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AdvertCard extends StatelessWidget {
-  const AdvertCard({
+class RectangleAdvert extends StatelessWidget {
+  const RectangleAdvert({
     super.key,
     required this.advert,
     required this.height,

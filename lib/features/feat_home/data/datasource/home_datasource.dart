@@ -3,8 +3,8 @@ import 'package:aviz/features/feat_home/data/models/advert_model.dart';
 import 'package:dio/dio.dart';
 
 abstract class HomeDatasource {
-  Future<AdvertsModel> getAllAdverts();
-  Future<AdvertsModel> getHotAdverts();
+  Future<AdvertsModel> getAllAdverts({required int page});
+  Future<AdvertsModel> getHotAdverts({required int page});
 }
 
 class HomeDatasourceImpl extends HomeDatasource {
@@ -12,9 +12,12 @@ class HomeDatasourceImpl extends HomeDatasource {
   HomeDatasourceImpl(this.dio);
 
   @override
-  Future<AdvertsModel> getAllAdverts() async {
+  Future<AdvertsModel> getAllAdverts({required int page}) async {
     try {
-      var response = await dio.get('collections/advert/records');
+      var response = await dio.get(
+        'collections/advert/records',
+        queryParameters: {'page': page},
+      );
       return AdvertsModel.fromJson(response.data);
     } on DioException catch (ex) {
       throw AppException(
@@ -27,11 +30,11 @@ class HomeDatasourceImpl extends HomeDatasource {
   }
 
   @override
-  Future<AdvertsModel> getHotAdverts() async {
+  Future<AdvertsModel> getHotAdverts({required int page}) async {
     try {
       var response = await dio.get(
         'collections/advert/records',
-        queryParameters: {'filter': 'isHot=true'},
+        queryParameters: {'filter': 'isHot=true', 'page': page},
       );
       return AdvertsModel.fromJson(response.data);
     } on DioException catch (ex) {
